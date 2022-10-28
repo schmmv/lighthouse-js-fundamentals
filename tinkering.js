@@ -1,16 +1,16 @@
-function range(start, end, step) {
+function concat(array1, array2) {
   let newArray = [];
-  if (start !== undefined && end !== undefined && step !== undefined && step >=0 && start <= end) {
-  newArray.push(start);
-  while(start <= end - step) {
-    start += step;
-    newArray.push(start);
+  for (let i = 0; i < array1.length; i++) {
+    newArray.push(array1[i]);
   }
-}
+  for (let j = 0; j < array2.length; j++) {
+    newArray.push(array2[j]);
+  }
+
   return newArray;
 }
 
-
-console.log(range(0, 10, 2));
-console.log(range(10, 30, 5));
-console.log(range(-5, 2, 3));
+console.log(concat([ 1, 2, 3 ], [ 4, 5, 6 ]), "=?", [ 1, 2, 3, 4, 5, 6 ]);
+console.log(concat([ 0, 3, 1 ], [ 9, 7, 2 ]), "=?", [ 0, 3, 1, 9, 7, 2 ]);
+console.log(concat([], [ 9, 7, 2 ]), "=?", [ 9, 7, 2 ]);
+console.log(concat([ 5, 10 ], []), "=?", [ 5, 10 ]);
