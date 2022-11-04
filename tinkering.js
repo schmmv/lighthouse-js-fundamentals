@@ -1,23 +1,18 @@
 const judgeVegetable = function(vegetables, metric) {
   let indexOfWinner = 0;
-  switch(metric) {
-  case "redness":
-    for(let i = 1; i < vegetables.length; i++) {
-      if(vegetables[i].redness > vegetables[indexOfWinner].redness)
+  for(let i = 1; i < vegetables.length; i++) {
+
+    if (metric === "plumpness") {
+      if (vegetables[i].plumpness > vegetables[indexOfWinner].plumpness)
+        indexOfWinner = i;
+    } else if (metric === "redness") {
+      if (vegetables[i].redness > vegetables[indexOfWinner].redness)
         indexOfWinner = i;
     }
-    break;
-  case "plumpness":
-    for(let i = 1; i < vegetables.length; i++) {
-      if(vegetables[i].plumpness > vegetables[indexOfWinner].plumpness)
-        indexOfWinner = i;
-    }
-    break;
-  default:
-    return "Invalid metric";
   }
-  return vegetables[indexOfWinner].submitter;
-}
+    return vegetables[indexOfWinner].submitter;
+  
+};
 
 const vegetables = [
   {
@@ -37,6 +32,6 @@ const vegetables = [
   }
 ]
 
-const metric = 'redness'
+const metric = 'redness';
 
 console.log(judgeVegetable(vegetables, metric));
