@@ -1,34 +1,16 @@
-const judgeVegetable = function(vegetables, metric) {
-  let rating = 0;
-  let winner = "";
-  const str = metric;
-  for(let veg of vegetables) {
-      if (veg[metric] > rating) {
-        rating = veg[metric];
-        winner = veg.submitter;
-      }
-    }
-  return winner;
-};
-
-const vegetables = [
-  {
-    submitter: 'Old Man Franklin',
-    redness: 10,
-    plumpness: 5
-  },
-  {
-    submitter: 'Sally Tomato-Grower',
-    redness: 2,
-    plumpness: 8
-  },
-  {
-    submitter: 'Hamid Hamidson',
-    redness: 4,
-    plumpness: 3
+function merge(array1, array2) {
+  let newArray = [];
+  for (let num of array1) {
+    newArray.push(num);
   }
-]
+  for(let num2 of array2) {
+    newArray.push(num2);
+  }
 
-const metric = 'plumpness'
+  newArray.sort(function(a, b,){return a-b});
+  return newArray;
 
-console.log(judgeVegetable(vegetables, metric));
+}
+console.log(merge([ 4, 5, 6 ], [ 1, 2, 3, 4 ]), "=?", [ 1, 2, 3, 4, 4, 5, 6 ]);
+console.log(merge([ 4 ], [ 2, 5, 8 ]), "=?", [ 2, 4, 5, 8 ]);
+console.log(merge([ 1, 2, 6 ], []), "=?", [ 1, 2, 6 ]);
